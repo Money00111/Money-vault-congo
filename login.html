@@ -1,0 +1,67 @@
+<!DOCTYPE html><html lang="fr"><head><meta charset="UTF-8"><meta name="viewport"
+content="width=device-width, initial-scale=1.0">
+
+<title>Money Vault | Connexion</title><link rel="stylesheet" href="css/auth.css"></head><body><div class="container"><div class="card"><h1>Money Vault</h1><p>Bienvenue</p><form id="loginForm"><div class="inputBox"><input
+type="email"
+id="email"
+placeholder="Adresse e-mail"
+required>
+
+</div><div class="inputBox"><input
+type="password"
+id="password"
+placeholder="Mot de passe"
+required>
+
+</div><button type="submit">
+Se connecter
+</button><div class="links"><a href="register.html">
+Créer un compte
+</a><a href="#" id="forgotPassword">
+Mot de passe oublié ?
+</a></div></form></div></div><script type="module">
+
+import {
+loginUser,
+resetPassword
+} from "./js/auth.js";
+
+const form =
+document.getElementById("loginForm");
+
+form.addEventListener("submit", async(e)=>{
+
+e.preventDefault();
+
+const email =
+document.getElementById("email").value.trim();
+
+const password =
+document.getElementById("password").value;
+
+await loginUser(email,password);
+
+});
+
+document
+.getElementById("forgotPassword")
+.addEventListener("click",async(e)=>{
+
+e.preventDefault();
+
+const email=
+prompt("Entrez votre adresse e-mail");
+
+if(email){
+
+await resetPassword(email);
+
+}
+
+});
+
+</script>
+
+</body>
+
+</html>
