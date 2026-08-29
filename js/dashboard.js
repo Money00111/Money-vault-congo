@@ -1189,3 +1189,34 @@ console.log(
 console.log(
     "=================================="
 );
+
+// ======================================
+// CONGO LOADING SCREEN
+// ======================================
+
+window.addEventListener(
+    "load",
+    () => {
+
+        const loading =
+            document.getElementById(
+                "congoLoading"
+            );
+
+        if (!loading)
+            return;
+
+
+        setTimeout(
+            () => {
+
+                loading.classList.add(
+                    "hide"
+                );
+
+            },
+            1200
+        );
+
+    }
+);
