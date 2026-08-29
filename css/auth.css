@@ -568,3 +568,72 @@ button:active {
         font-size: 14px;
     }
 }
+/* =========================================
+   🇨🇩 CONGO FLAG DESIGN - TOP ONLY
+   ========================================= */
+
+.card {
+    position: relative;
+    overflow: hidden;
+}
+
+/* Amabara y'ibendera hejuru */
+.card::before {
+    content: "";
+    position: absolute;
+
+    top: 0;
+    left: 0;
+
+    width: 100%;
+    height: 7px;
+
+    background:
+        linear-gradient(
+            90deg,
+            #007fff 0%,
+            #007fff 35%,
+            #f7d618 35%,
+            #f7d618 45%,
+            #ce1021 45%,
+            #ce1021 75%,
+            #f7d618 75%,
+            #f7d618 82%,
+            #007fff 82%,
+            #007fff 100%
+        );
+
+    z-index: 10;
+
+    box-shadow:
+        0 2px 12px rgba(0,127,255,.45);
+}
+
+/* Akandi ka stripe kameze nk'ibendera rya Congo */
+.card::after {
+    content: "";
+
+    position: absolute;
+
+    top: 7px;
+    left: -5%;
+
+    width: 110%;
+    height: 4px;
+
+    background:
+        linear-gradient(
+            145deg,
+            transparent 0%,
+            transparent 35%,
+            #ce1021 35%,
+            #ce1021 60%,
+            transparent 60%
+        );
+
+    transform: rotate(-2deg);
+
+    opacity: .95;
+
+    z-index: 9;
+}
