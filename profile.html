@@ -1,0 +1,274 @@
+<!DOCTYPE html><html lang="fr"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>Mon Profil | Money Vault</title><link rel="stylesheet" href="css/profile.css"><link rel="stylesheet"
+href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.1/css/all.min.css"></head><body><!-- ===========================
+     Sidebar
+=========================== --><div class="sidebar" id="sidebar"><div class="logo"><h2>💰 Money Vault</h2></div><ul><li>
+<a href="dashboard.html">
+<i class="fa-solid fa-house"></i>
+<span>Tableau de bord</span>
+</a>
+</li><li>
+<a href="deposit.html">
+<i class="fa-solid fa-wallet"></i>
+<span>Dépôt</span>
+</a>
+</li><li>
+<a href="withdraw.html">
+<i class="fa-solid fa-money-bill-transfer"></i>
+<span>Retrait</span>
+</a>
+</li><li>
+<a href="transactions.html">
+<i class="fa-solid fa-clock-rotate-left"></i>
+<span>Transactions</span>
+</a>
+</li><li>
+<a href="profile.html" class="active">
+<i class="fa-solid fa-user"></i>
+<span>Profil</span>
+</a>
+</li><li>
+<a href="#" id="logoutBtn">
+<i class="fa-solid fa-right-from-bracket"></i>
+<span>Déconnexion</span>
+</a>
+</li></ul></div><!-- ===========================
+     Main Content
+=========================== --><div class="main"><header><button id="menuBtn"><i class="fa-solid fa-bars"></i>
+
+</button><h2>👤 Mon Profil</h2><div class="header-right"><i class="fa-solid fa-bell"></i>
+
+<i class="fa-solid fa-gear"></i>
+
+</div></header><!-- ===========================
+     Profile Hero Card
+=========================== --><section class="profile-hero"><div class="profile-cover"></div><div class="profile-content"><div class="profile-image"><img
+id="profilePhoto"
+src="images/user.png"
+alt="Profil">
+
+<label for="photoInput"><i class="fa-solid fa-camera"></i>
+
+</label><input
+type="file"
+id="photoInput"
+accept="image/*"
+hidden>
+
+</div><div class="profile-details"><h1 id="fullName">Chargement...
+
+</h1><p id="userEmail">Chargement...
+
+</p><div class="profile-badges"><span class="vip">⭐ <span id="vipLevel">
+
+VIP 0
+
+</span></span><span class="verified"><i class="fa-solid fa-circle-check"></i>
+
+Vérifié
+
+</span></div></div></div></section><!-- ===========================
+     Wallet Cards
+=========================== --><section class="wallet-grid"><div class="wallet-card"><div class="icon"><i class="fa-solid fa-wallet"></i>
+
+</div><div><h3>Solde</h3><h2 id="balance">0 RWF
+
+</h2></div></div><div class="wallet-card"><div class="icon"><i class="fa-solid fa-gift"></i>
+
+</div><div><h3>Bonus</h3><h2 id="bonus">0 RWF
+
+</h2></div></div><div class="wallet-card"><div class="icon"><i class="fa-solid fa-users"></i>
+
+</div><div><h3>Parrainage</h3><h2 id="referralBonus">0 RWF
+
+</h2></div></div><div class="wallet-card"><div class="icon"><i class="fa-solid fa-crown"></i>
+
+</div><div><h3>Niveau VIP</h3><h2 id="vipCard">VIP 0
+
+</h2></div></div></section><!-- ===========================
+     Quick Actions
+=========================== --><section class="quick-actions"><div class="section-title"><h2>⚡ Actions rapides</h2><p>Accédez rapidement à votre compte</p></div><div class="action-grid"><a href="deposit.html" class="action-card"><div class="action-icon deposit"><i class="fa-solid fa-wallet"></i>
+
+</div><h3>Dépôt</h3><p>Ajouter de l'argent à votre portefeuille</p></a><a href="withdraw.html" class="action-card"><div class="action-icon withdraw"><i class="fa-solid fa-money-bill-transfer"></i>
+
+</div><h3>Retrait</h3><p>Retirer votre solde</p></a><a href="transactions.html" class="action-card"><div class="action-icon history"><i class="fa-solid fa-clock-rotate-left"></i>
+
+</div><h3>Historique</h3><p>Voir toutes les transactions</p></a><a href="tel:+250788846187" class="action-card"><div class="action-icon support"><i class="fa-solid fa-headset"></i>
+
+</div><h3>Support</h3><p>Service client 24h/24 et 7j/7</p></a></div></section><!-- ===========================
+     Personal Information
+=========================== --><section class="profile-info-card"><div class="card-header"><h2><i class="fa-solid fa-id-card"></i>
+
+Informations personnelles
+
+</h2><button id="editProfileBtn"><i class="fa-solid fa-pen"></i>
+
+Modifier
+
+</button></div><form id="profileForm"><div class="form-grid"><div class="input-box"><label>Nom complet</label>
+
+<input
+type="text"
+id="name"
+placeholder="Entrez votre nom complet">
+
+</div><div class="input-box"><label>Numéro de téléphone</label>
+
+<input
+type="tel"
+id="phone"
+placeholder="07XXXXXXXX">
+
+</div><div class="input-box"><label>Adresse e-mail</label>
+
+<input
+type="email"
+id="email"
+readonly>
+
+</div><div class="input-box"><label>Pays</label>
+
+<select id="country"><option>🇷🇼 Rwanda</option><option>🇺🇬 Ouganda</option><option>🇰🇪 Kenya</option><option>🇹🇿 Tanzanie</option><option>🇧🇮 Burundi</option></select></div><div class="input-box full-width"><label>Adresse</label>
+
+<textarea
+id="address"
+rows="4"
+placeholder="Entrez votre adresse"></textarea></div></div><div class="form-buttons"><button
+type="reset"
+class="cancel-btn">
+
+<i class="fa-solid fa-xmark"></i>
+
+Annuler
+
+</button><button
+type="submit"
+class="save-btn">
+
+<i class="fa-solid fa-floppy-disk"></i>
+
+Enregistrer les modifications
+
+</button></div></form></section><!-- ===========================
+     Account Statistics
+=========================== --><section class="account-stats"><div class="stat-card"><i class="fa-solid fa-money-bill-trend-up"></i>
+
+<h3>Total des dépôts</h3><h2 id="totalDeposit">0 RWF
+
+</h2></div><div class="stat-card"><i class="fa-solid fa-money-bill-wave"></i>
+
+<h3>Total des retraits</h3><h2 id="totalWithdraw">0 RWF
+
+</h2></div><div class="stat-card"><i class="fa-solid fa-list-check"></i>
+
+<h3>Transactions</h3><h2 id="totalTransactions">0
+
+</h2></div><div class="stat-card"><i class="fa-solid fa-award"></i>
+
+<h3>Statut du compte</h3><h2 class="verified-status">Vérifié
+
+</h2></div><div class="referral-card"><h3>Code de parrainage</h3><h2 id="referralCode">Chargement...</h2><input
+type="text"
+id="referralLink"
+readonly>
+
+<button id="copyReferralBtn">Copier le lien
+
+</button><button id="shareWhatsappBtn">Partager sur WhatsApp
+
+</button><p>Total des parrainages :
+
+<span id="totalReferrals">0</span>
+
+</p></div></section><!-- ===========================
+     Security & Settings
+=========================== --><section class="settings-grid"><div class="settings-card"><h2><i class="fa-solid fa-shield-halved"></i>
+
+Sécurité
+
+</h2><div class="setting-item"><span>🔒 Modifier le mot de passe</span>
+
+<button id="changePasswordBtn">Modifier</button>
+
+</div><div class="setting-item"><span>🛡 Authentification à deux facteurs</span>
+
+<label class="switch"><input type="checkbox" id="twoFactor"><span class="slider"></span>
+
+</label></div><div class="setting-item"><span>📧 Notifications par e-mail</span>
+
+<label class="switch"><input type="checkbox" checked><span class="slider"></span>
+
+</label></div><div class="setting-item"><span>🌙 Mode sombre</span>
+
+<label class="switch"><input type="checkbox" id="darkMode"><span class="slider"></span>
+
+</label></div></div><div class="settings-card"><h2><i class="fa-solid fa-circle-info"></i>
+
+Informations du compte
+
+</h2><div class="info-row"><span>ID du compte</span>
+
+<strong id="accountId">Chargement...</strong>
+
+</div><div class="info-row"><span>Membre depuis</span>
+
+<strong id="joinDate">Chargement...</strong>
+
+</div><div class="info-row"><span>Dernière connexion</span>
+
+<strong id="lastLogin">Aujourd'hui</strong>
+
+</div><div class="info-row"><span>Statut du compte</span>
+
+<strong class="verified-text">Vérifié ✅</strong>
+
+</div></div></section><!-- ===========================
+     Customer Support
+=========================== --><section class="support-card"><h2>📞 Besoin d'aide ?</h2><p>Notre équipe de support est disponible tous les jours pour vous aider avec vos dépôts, retraits et problèmes de compte.
+
+</p><div class="support-buttons"><a href="tel:+250788846187" class="call-btn"><i class="fa-solid fa-phone"></i>
+
+Appeler le support
+
+</a><a href="https://wa.me/250788846187"
+
+target="_blank"
+
+class="whatsapp-btn">
+
+<i class="fa-brands fa-whatsapp"></i>
+
+WhatsApp
+
+</a></div></section><!-- ===========================
+     Bottom Navigation
+=========================== --><nav class="bottom-nav"><a href="dashboard.html"><i class="fa-solid fa-house"></i>
+
+<span>Accueil</span>
+
+</a><a href="deposit.html"><i class="fa-solid fa-wallet"></i>
+
+<span>Dépôt</span>
+
+</a><a href="withdraw.html"><i class="fa-solid fa-money-bill-transfer"></i>
+
+<span>Retrait</span>
+
+</a><a href="transactions.html"><i class="fa-solid fa-clock-rotate-left"></i>
+
+<span>Historique</span>
+
+</a><a href="profile.html" class="active"><i class="fa-solid fa-user"></i>
+
+<span>Profil</span>
+
+</a></nav><!-- Scroll Button --><button id="scrollTopBtn"><i class="fa-solid fa-arrow-up"></i>
+
+</button><!-- Loading --><div class="loading-screen" id="loadingScreen"><div class="loader"></div><h3>Chargement du profil...</h3></div><!-- Footer --><footer><p>© 2026 <strong>Money Vault</strong>
+
+<br>Rapide • Sécurisé • Fiable
+
+</p></footer></div><!-- Main End --><script type="module" src="js/profile.js"></script>
+
+</body>
+
+</html>
