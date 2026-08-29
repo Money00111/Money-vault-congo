@@ -1,334 +1,491 @@
-<!DOCTYPE html><html lang="fr"><head><meta charset="UTF-8"><meta name="viewport"
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+
+<meta charset="UTF-8">
+
+<meta name="viewport"
 content="width=device-width, initial-scale=1.0">
 
-<title>Deposit | Money Vault</title><link rel="stylesheet"
-href="css/deposit.css"><link rel="stylesheet"
-href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"></head><body><!-- ===========================
-LOADING
-=========================== --><div id="loadingScreen" class="loading-screen"><div class="loader"></div>
+<title>Dépôt | Money Vault</title>
 
-<h2>Veuillez patienter...</h2>
+<link rel="stylesheet"
+href="css/deposit.css">
 
-</div><!-- ===========================
-SIDEBAR
-=========================== --><div id="sidebar" class="sidebar"><div class="logo">
+<link rel="stylesheet"
+href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
 
-    <h2>💰 Money Vault</h2>
+</head>
+
+<body>
+
+<!-- ===========================
+CHARGEMENT
+=========================== -->
+
+<div id="loadingScreen" class="loading-screen">
+
+    <div class="loader"></div>
+
+    <h2>Veuillez patienter...</h2>
+
+    <p>Chargement...</p>
 
 </div>
 
-<ul>
 
-    <li>
-        <a href="dashboard.html">
-            <i class="fa fa-house"></i>
-            Tableau de bord
-        </a>
-    </li>
+<!-- ===========================
+SIDEBAR
+=========================== -->
 
-    <li>
-        <a href="deposit.html"
-        class="active">
-            <i class="fa fa-wallet"></i>
-            Dépôt
-        </a>
-    </li>
+<div id="sidebar" class="sidebar">
 
-    <li>
-        <a href="withdraw.html">
-            <i class="fa fa-money-bill-transfer"></i>
-            Retrait
-        </a>
-    </li>
+    <div class="logo">
 
-    <li>
-        <a href="transactions.html">
-            <i class="fa fa-clock-rotate-left"></i>
-            Transactions
-        </a>
-    </li>
+        <h2>💰 Money Vault</h2>
 
-    <li>
-        <a href="profile.html">
-            <i class="fa fa-user"></i>
-            Profil
-        </a>
-    </li>
+    </div>
 
-    <li>
-        <a href="#"
-        id="logoutBtn">
-            <i class="fa fa-right-from-bracket"></i>
-            Déconnexion
-        </a>
-    </li>
+    <ul>
 
-</ul>
+        <li>
+            <a href="dashboard.html">
+                <i class="fa fa-house"></i>
+                Tableau de bord
+            </a>
+        </li>
 
-</div><!-- ===========================
+        <li>
+            <a href="deposit.html" class="active">
+                <i class="fa fa-wallet"></i>
+                Dépôt
+            </a>
+        </li>
+
+        <li>
+            <a href="withdraw.html">
+                <i class="fa fa-money-bill-transfer"></i>
+                Retrait
+            </a>
+        </li>
+
+        <li>
+            <a href="transactions.html">
+                <i class="fa fa-clock-rotate-left"></i>
+                Transactions
+            </a>
+        </li>
+
+        <li>
+            <a href="profile.html">
+                <i class="fa fa-user"></i>
+                Profil
+            </a>
+        </li>
+
+        <li>
+            <a href="#" id="logoutBtn">
+                <i class="fa fa-right-from-bracket"></i>
+                Déconnexion
+            </a>
+        </li>
+
+    </ul>
+
+</div>
+
+
+<!-- ===========================
 MAIN
-=========================== --><div class="main"><header><button id="menuBtn"><i class="fa fa-bars"></i>
+=========================== -->
 
-</button><h2>Déposer de l'argent</h2></header><!-- ===========================
-PAYMENT METHODS
-=========================== --><section class="payment-methods"><h2>Méthodes de paiement</h2><div class="payment-grid"><div class="payment-card"><h3>MTN Mobile Money</h3><h1 id="mtnNumber">
-0788846187
-</h1><button id="copyMTN">
-Copier le numéro
-</button></div><div class="payment-card"><h3>Airtel Money</h3><h1 id="airtelNumber">
-0722993296
-</h1><button id="copyAirtel">
-Copier le numéro
-</button></div></div></section><!-- ===========================
-DEPOSIT FORM
-=========================== --><section class="deposit-form"><h2>💰 Soumettre un dépôt</h2>
+<div class="main">
 
-<form id="depositForm">
+<header>
 
-    <div class="input-group">
-
-        <label>Montant (USD)</label>
-
-        <input
-            type="number"
-            id="amount"
-            placeholder="Entrez le montant en USD"
-            min="1"
-            max="10000"
-            step="0.01"
-            required>
-
-        <small>
-            Montant minimum : $1 — maximum : $10,000
-        </small>
-
-    </div>
-
-    <div class="input-group">
-
-        <label>Méthode de paiement</label>
-
-        <select
-            id="paymentMethod"
-            required>
-
-            <option value="">
-                Sélectionnez une méthode de paiement
-            </option>
-
-            <option value="MTN Mobile Money">
-                MTN Mobile Money
-            </option>
-
-            <option value="Airtel Money">
-                Airtel Money
-            </option>
-
-        </select>
-
-    </div>
-
-    <div class="input-group">
-
-        <label>Numéro de téléphone de l'expéditeur</label>
-
-        <input
-            type="tel"
-            id="senderPhone"
-            placeholder="07XXXXXXXX"
-            maxlength="10"
-            required>
-
-    </div>
-
-    <div class="input-group">
-
-        <label>ID de transaction</label>
-
-        <input
-            type="text"
-            id="transactionId"
-            placeholder="Exemple : PP240712ABC123"
-            required>
-
-    </div>
-
-    <div class="input-group">
-
-        <label>Date et heure du paiement</label>
-
-        <input
-            type="datetime-local"
-            id="paymentDate"
-            required>
-
-    </div>
-
-    <div class="input-group">
-
-        <label>Note supplémentaire (facultatif)</label>
-
-        <textarea
-            id="note"
-            rows="4"
-            placeholder="Écrivez une information supplémentaire ici..."></textarea>
-
-    </div>
-
-    <button
-        type="submit"
-        id="submitBtn"
-        class="submit-btn">
-
-        <i class="fa-solid fa-paper-plane"></i>
-
-        Soumettre la demande de dépôt
-
+    <button id="menuBtn">
+        <i class="fa fa-bars"></i>
     </button>
 
-</form>
+    <h2>Effectuer un dépôt</h2>
 
-</section><!-- ===========================
-CURRENT DEPOSIT STATUS
-=========================== --><section class="deposit-status"><h2>📋 Statut du dépôt actuel</h2>
+</header>
 
-<div class="status-card pending">
 
-    <h3>Statut</h3>
+<!-- ===========================
+METHODES DE PAIEMENT
+=========================== -->
 
-    <p id="depositStatus">
-        Aucune demande de dépôt
-    </p>
+<section class="payment-methods">
 
-</div>
+    <h2>Méthodes de paiement</h2>
 
-</section><!-- ===========================
-DEPOSIT HISTORY
-=========================== --><section class="deposit-history"><h2>📜 Historique des dépôts</h2>
+    <div class="payment-grid">
 
-<div id="historyList">
+        <div class="payment-card">
 
-    <div class="empty-history">
+            <h3>MTN Mobile Money</h3>
 
-        <i class="fa-solid fa-clock-rotate-left"></i>
+            <h1 id="mtnNumber">
+                0788846187
+            </h1>
 
-        <h3>Aucun historique de dépôt</h3>
+            <button id="copyMTN">
+                Copier le numéro
+            </button>
 
-        <p>
-            Vos dépôts soumis apparaîtront ici.
+        </div>
+
+
+        <div class="payment-card">
+
+            <h3>Airtel Money</h3>
+
+            <h1 id="airtelNumber">
+                0722993296
+            </h1>
+
+            <button id="copyAirtel">
+                Copier le numéro
+            </button>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- ===========================
+FORMULAIRE DE DEPOT
+=========================== -->
+
+<section class="deposit-form">
+
+    <h2>💰 Soumettre un dépôt</h2>
+
+    <form id="depositForm">
+
+
+        <!-- MONTANT -->
+
+        <div class="input-group">
+
+            <label>Montant (USD)</label>
+
+            <input
+                type="number"
+                id="amount"
+                placeholder="Entrez le montant ($1 - $10)"
+                min="1"
+                max="10"
+                step="0.01"
+                required>
+
+            <small>
+                Montant minimum : 1 $ — Montant maximum : 10 $
+            </small>
+
+        </div>
+
+
+        <!-- METHODE -->
+
+        <div class="input-group">
+
+            <label>Méthode de paiement</label>
+
+            <select
+                id="paymentMethod"
+                required>
+
+                <option value="">
+                    Sélectionnez une méthode
+                </option>
+
+                <option value="MTN Mobile Money">
+                    MTN Mobile Money
+                </option>
+
+                <option value="Airtel Money">
+                    Airtel Money
+                </option>
+
+            </select>
+
+        </div>
+
+
+        <!-- NUMERO -->
+
+        <div class="input-group">
+
+            <label>Numéro de téléphone de l'expéditeur</label>
+
+            <input
+                type="tel"
+                id="senderPhone"
+                placeholder="07XXXXXXXX"
+                maxlength="10"
+                required>
+
+        </div>
+
+
+        <!-- TRANSACTION ID -->
+
+        <div class="input-group">
+
+            <label>ID de transaction</label>
+
+            <input
+                type="text"
+                id="transactionId"
+                placeholder="Exemple : PP240712ABC123"
+                required>
+
+        </div>
+
+
+        <!-- DATE -->
+
+        <div class="input-group">
+
+            <label>Date et heure du paiement</label>
+
+            <input
+                type="datetime-local"
+                id="paymentDate"
+                required>
+
+        </div>
+
+
+        <!-- NOTE -->
+
+        <div class="input-group">
+
+            <label>Note supplémentaire (facultatif)</label>
+
+            <textarea
+                id="note"
+                rows="4"
+                placeholder="Écrivez une information supplémentaire ici..."></textarea>
+
+        </div>
+
+
+        <!-- SUBMIT -->
+
+        <button
+            type="submit"
+            id="submitBtn"
+            class="submit-btn">
+
+            <i class="fa-solid fa-paper-plane"></i>
+
+            Soumettre la demande de dépôt
+
+        </button>
+
+    </form>
+
+</section>
+
+
+<!-- ===========================
+STATUT DU DEPOT
+=========================== -->
+
+<section class="deposit-status">
+
+    <h2>📋 Statut du dépôt actuel</h2>
+
+    <div class="status-card pending">
+
+        <h3>Statut</h3>
+
+        <p id="depositStatus">
+
+            Aucune demande de dépôt
+
         </p>
 
     </div>
 
-</div>
+</section>
 
-</section><!-- ===========================
-SECURITY NOTICE
-=========================== --><section class="security"><div class="security-card">
 
-    <h2>
+<!-- ===========================
+HISTORIQUE
+=========================== -->
 
-        <i class="fa-solid fa-shield-halved"></i>
+<section class="deposit-history">
 
-        Avis de sécurité
+    <h2>📜 Historique des dépôts</h2>
 
-    </h2>
+    <div id="historyList">
 
-    <p>
+        <div class="empty-history">
 
-        Envoyez uniquement l'argent aux numéros de paiement officiels
-        affichés ci-dessus.
+            <i class="fa-solid fa-clock-rotate-left"></i>
 
-        Conservez toujours votre ID de transaction jusqu'à
-        l'approbation de votre dépôt.
+            <h3>Aucun historique de dépôt</h3>
 
-        Votre solde ne sera mis à jour qu'après l'approbation
-        du dépôt par l'administrateur.
+            <p>
+                Vos dépôts apparaîtront ici.
+            </p>
 
-    </p>
+        </div>
 
-</div>
+    </div>
 
-</section><!-- ===========================
+</section>
+
+
+<!-- ===========================
+SECURITE
+=========================== -->
+
+<section class="security">
+
+    <div class="security-card">
+
+        <h2>
+
+            <i class="fa-solid fa-shield-halved"></i>
+
+            Avis de sécurité
+
+        </h2>
+
+        <p>
+
+            Envoyez uniquement de l'argent aux numéros
+            de paiement officiels affichés ci-dessus.
+
+            Conservez toujours votre ID de transaction
+            jusqu'à l'approbation de votre dépôt.
+
+            Votre solde sera mis à jour uniquement après
+            l'approbation du dépôt par l'administrateur.
+
+        </p>
+
+    </div>
+
+</section>
+
+
+<!-- ===========================
 SUPPORT
-=========================== --><section class="support"><div class="support-card">
+=========================== -->
 
-    <h2>
+<section class="support">
 
-        <i class="fa-solid fa-headset"></i>
+    <div class="support-card">
 
-        Besoin d'aide ?
+        <h2>
 
-    </h2>
+            <i class="fa-solid fa-headset"></i>
 
-    <p>
+            Besoin d'aide ?
 
-        Si votre dépôt est retardé, contactez notre équipe
-        d'assistance.
+        </h2>
 
-    </p>
+        <p>
 
-    <a href="support.html" class="support-btn">
+            Si votre dépôt est retardé, contactez
+            notre équipe de support.
 
-        <i class="fa-solid fa-comments"></i>
+        </p>
 
-        Contacter le support
+        <a href="support.html" class="support-btn">
+
+            <i class="fa-solid fa-comments"></i>
+
+            Contacter le support
+
+        </a>
+
+    </div>
+
+</section>
+
+
+<!-- ===========================
+NAVIGATION MOBILE
+=========================== -->
+
+<nav class="bottom-nav">
+
+    <a href="dashboard.html">
+
+        <i class="fa-solid fa-house"></i>
+
+        <span>Accueil</span>
 
     </a>
 
+    <a href="deposit.html" class="active">
+
+        <i class="fa-solid fa-wallet"></i>
+
+        <span>Dépôt</span>
+
+    </a>
+
+    <a href="withdraw.html">
+
+        <i class="fa-solid fa-money-bill-transfer"></i>
+
+        <span>Retrait</span>
+
+    </a>
+
+    <a href="transactions.html">
+
+        <i class="fa-solid fa-clock-rotate-left"></i>
+
+        <span>Historique</span>
+
+    </a>
+
+    <a href="profile.html">
+
+        <i class="fa-solid fa-user"></i>
+
+        <span>Profil</span>
+
+    </a>
+
+</nav>
+
+
+<!-- ===========================
+FOOTER
+=========================== -->
+
+<footer class="footer">
+
+    <p>
+        © 2026 Money Vault. Tous droits réservés.
+    </p>
+
+</footer>
+
 </div>
 
-</section><!-- ===========================
-BOTTOM NAVIGATION
-=========================== --><nav class="bottom-nav"><a href="dashboard.html">
 
-    <i class="fa-solid fa-house"></i>
-
-    <span>Accueil</span>
-
-</a>
-
-<a href="deposit.html" class="active">
-
-    <i class="fa-solid fa-wallet"></i>
-
-    <span>Dépôt</span>
-
-</a>
-
-<a href="withdraw.html">
-
-    <i class="fa-solid fa-money-bill-transfer"></i>
-
-    <span>Retrait</span>
-
-</a>
-
-<a href="transactions.html">
-
-    <i class="fa-solid fa-clock-rotate-left"></i>
-
-    <span>Historique</span>
-
-</a>
-
-<a href="profile.html">
-
-    <i class="fa-solid fa-user"></i>
-
-    <span>Profil</span>
-
-</a>
-
-</nav><!-- ===========================
-FOOTER
-=========================== --><footer class="footer"><p>
-    © 2026 Money Vault. Tous droits réservés.
-</p>
-
-</footer></div><!-- END MAIN --><!-- ===========================
+<!-- ===========================
 JAVASCRIPT
-=========================== --><script type="module" src="js/deposit.js"></script>
+=========================== -->
+
+<script
+    type="module"
+    src="js/deposit.js">
+</script>
 
 </body>
 
