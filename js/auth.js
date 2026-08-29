@@ -333,38 +333,63 @@ export async function registerUser(
         };
 
 
-        // ==================================
-        // ATOMIC DATABASE WRITE
-        // ==================================
+// ======================================
+// SAVE USER DATA
+// ======================================
 
-        const updates = {};
+const userRef = ref(
+    db,
+    "users/" + user.uid
+);
 
-
-        updates[
-            "users/" +
-            user.uid
-        ] =
-            userData;
-
-
-        updates[
-            "referralCodes/" +
-            myReferralCode
-        ] = {
-
-            uid:
-                user.uid,
-
-            createdAt:
-                Date.now()
-
-        };
+await update(
+    userRef,
+    userData
+);
 
 
-        await update(
-            ref(db),
-            updates
-        );
+// ======================================
+// SAVE MY REFERRAL CODE
+// ======================================
+
+try {
+
+    await update(
+        ref(
+            db,
+            "referralCodes/" + myReferralCode
+        ),
+        {
+            uid: user.uid,
+            createdAt: Date.now()
+        }
+    );
+
+}
+catch (referralError) {
+
+    console.warn(
+        "Referral code could not be saved:",
+        referralError
+    );
+
+}
+
+
+// ======================================
+// SUCCESS
+// ======================================
+
+console.log("REGISTRATION SUCCESSFUL");
+
+console.log("UID:", user.uid);
+
+console.log(
+    "MY REFERRAL CODE:",
+    myReferralCode
+);
+
+return true;
 
 
         // ==================================
