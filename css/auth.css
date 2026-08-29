@@ -1,339 +1,557 @@
-/* ======================================
-   MONEY VAULT AUTH
-   REGISTER + LOGIN
-   RDC / CONGO STYLE
-   CLEAN & SIMPLE
-   ====================================== */
+/* =========================================
+   MONEY VAULT - CONGO AUTH DESIGN 🇨🇩
+   Login + Register
+   ========================================= */
 
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family: Arial, Helvetica, sans-serif;
 }
 
+:root {
+    --congo-blue: #007fff;
+    --congo-red: #ce1021;
+    --congo-yellow: #f7d618;
+    --white: #ffffff;
+    --dark: #07111f;
+    --glass: rgba(255, 255, 255, 0.12);
+    --border: rgba(255, 255, 255, 0.22);
+}
 
-/* ======================================
+/* =========================================
    BODY
-   ====================================== */
+   ========================================= */
 
 body {
     min-height: 100vh;
-    background: #f5f6f8;
+    font-family: Arial, Helvetica, sans-serif;
+
     display: flex;
-    justify-content: center;
     align-items: center;
-    padding: 20px;
+    justify-content: center;
+
+    padding: 25px;
+
+    color: var(--white);
+
+    background:
+        radial-gradient(
+            circle at 10% 10%,
+            rgba(0, 127, 255, 0.45),
+            transparent 35%
+        ),
+        radial-gradient(
+            circle at 90% 85%,
+            rgba(206, 16, 33, 0.40),
+            transparent 35%
+        ),
+        linear-gradient(
+            135deg,
+            #03152d,
+            #062e5c 45%,
+            #250912
+        );
+
+    overflow-x: hidden;
 }
 
+/* =========================================
+   DECORATIVE BACKGROUND
+   ========================================= */
 
-/* ======================================
+body::before,
+body::after {
+    content: "";
+    position: fixed;
+
+    width: 300px;
+    height: 300px;
+
+    border-radius: 50%;
+
+    filter: blur(80px);
+
+    opacity: 0.35;
+
+    pointer-events: none;
+}
+
+body::before {
+    background: var(--congo-blue);
+
+    top: -120px;
+    left: -100px;
+}
+
+body::after {
+    background: var(--congo-red);
+
+    bottom: -120px;
+    right: -100px;
+}
+
+/* =========================================
    CONTAINER
-   ====================================== */
+   ========================================= */
 
 .container {
     width: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    max-width: 440px;
+
+    position: relative;
+
+    z-index: 2;
 }
 
-
-/* ======================================
+/* =========================================
    CARD
-   ====================================== */
+   ========================================= */
 
 .card {
+
     width: 100%;
-    max-width: 400px;
 
-    background: #ffffff;
+    padding: 38px 30px;
 
-    padding: 30px 25px;
+    border-radius: 25px;
 
-    border-radius: 14px;
+    background:
+        linear-gradient(
+            145deg,
+            rgba(255,255,255,0.16),
+            rgba(255,255,255,0.06)
+        );
 
-    border: 1px solid #e5e7eb;
+    border: 1px solid var(--border);
+
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
 
     box-shadow:
-        0 8px 25px rgba(0, 0, 0, 0.08);
+        0 25px 70px rgba(0,0,0,0.45),
+        inset 0 1px 0 rgba(255,255,255,0.15);
+
+    animation: cardAppear 0.7s ease;
 }
 
+@keyframes cardAppear {
 
-/* ======================================
-   TITLE
-   ====================================== */
+    from {
+        opacity: 0;
+        transform: translateY(25px) scale(0.97);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+}
+
+/* =========================================
+   MONEY VAULT TITLE
+   ========================================= */
 
 .card h1,
 .card h2 {
+
     text-align: center;
 
-    color: #222222;
+    font-size: 30px;
 
-    font-size: 25px;
+    font-weight: 800;
+
+    letter-spacing: 0.5px;
 
     margin-bottom: 8px;
+
+    background:
+        linear-gradient(
+            90deg,
+            #ffffff,
+            var(--congo-yellow),
+            #ffffff
+        );
+
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+
+    background-size: 200% auto;
+
+    animation: shine 4s linear infinite;
 }
 
+@keyframes shine {
 
-/* ======================================
-   DESCRIPTION
-   ====================================== */
+    to {
+        background-position: 200% center;
+    }
+}
+
+.card h2 {
+    font-size: 27px;
+}
+
+/* =========================================
+   SUBTITLE
+   ========================================= */
 
 .card > p {
+
     text-align: center;
 
-    color: #777777;
+    color: rgba(255,255,255,0.72);
 
     font-size: 14px;
 
-    margin-bottom: 25px;
+    margin-bottom: 30px;
 }
 
+/* =========================================
+   FORM
+   ========================================= */
 
-/* ======================================
+form {
+    width: 100%;
+}
+
+/* =========================================
    INPUT BOX
-   ====================================== */
+   ========================================= */
 
 .inputBox {
+
     position: relative;
 
     width: 100%;
 
-    margin-bottom: 16px;
+    margin-bottom: 22px;
 }
 
-
-/* ======================================
+/* =========================================
    INPUT
-   ====================================== */
+   ========================================= */
 
 .inputBox input {
+
     width: 100%;
 
-    height: 48px;
+    height: 56px;
 
-    padding: 0 14px;
+    padding: 0 17px;
 
-    background: #ffffff;
+    border-radius: 14px;
 
-    border: 1px solid #d5d9df;
-
-    border-radius: 8px;
+    border: 1px solid rgba(255,255,255,0.18);
 
     outline: none;
 
-    color: #222222;
-
-    font-size: 15px;
-
-    transition: 0.2s;
-}
-
-
-/* ======================================
-   INPUT FOCUS
-   ====================================== */
-
-.inputBox input:focus {
-    border-color: #555555;
-
-    box-shadow:
-        0 0 0 2px rgba(0, 0, 0, 0.04);
-}
-
-
-/* ======================================
-   INPUT PLACEHOLDER
-   ====================================== */
-
-.inputBox input::placeholder {
-    color: #999999;
-}
-
-
-/* ======================================
-   FLOATING LABEL
-   ====================================== */
-
-.inputBox span {
-    position: absolute;
-
-    left: 14px;
-
-    top: 50%;
-
-    transform: translateY(-50%);
-
-    color: #888888;
-
-    font-size: 14px;
-
-    pointer-events: none;
-
-    background: #ffffff;
-
-    padding: 0 4px;
-
-    transition: 0.2s;
-}
-
-
-/* ======================================
-   LABEL WHEN INPUT ACTIVE
-   ====================================== */
-
-.inputBox input:focus + span,
-.inputBox input:valid + span {
-    top: 0;
-
-    transform: translateY(-50%);
-
-    font-size: 12px;
-
-    color: #555555;
-}
-
-
-/* ======================================
-   READONLY REFERRAL
-   ====================================== */
-
-.inputBox input[readonly] {
-    background: #f7f7f7;
-
-    color: #666666;
-
-    cursor: not-allowed;
-}
-
-
-/* ======================================
-   BUTTON
-   ====================================== */
-
-button {
-    width: 100%;
-
-    height: 48px;
-
-    border: none;
-
-    border-radius: 8px;
-
-    background: #222222;
+    background:
+        rgba(0,0,0,0.18);
 
     color: #ffffff;
 
     font-size: 15px;
 
-    font-weight: 600;
+    transition:
+        0.3s ease;
+
+    box-shadow:
+        inset 0 1px 5px rgba(0,0,0,0.15);
+}
+
+/* =========================================
+   INPUT FOCUS
+   ========================================= */
+
+.inputBox input:focus {
+
+    border-color: var(--congo-yellow);
+
+    background:
+        rgba(0, 127, 255, 0.12);
+
+    box-shadow:
+        0 0 0 3px rgba(247,214,24,0.10),
+        0 8px 25px rgba(0,0,0,0.18);
+}
+
+/* =========================================
+   INPUT PLACEHOLDER
+   ========================================= */
+
+.inputBox input::placeholder {
+
+    color:
+        rgba(255,255,255,0.55);
+}
+
+/* =========================================
+   FLOATING LABEL
+   ========================================= */
+
+.inputBox span {
+
+    position: absolute;
+
+    left: 16px;
+
+    top: 50%;
+
+    transform: translateY(-50%);
+
+    padding: 0 6px;
+
+    color:
+        rgba(255,255,255,0.55);
+
+    font-size: 14px;
+
+    pointer-events: none;
+
+    transition:
+        0.25s ease;
+
+    background: transparent;
+}
+
+/* Move label up */
+
+.inputBox input:focus + span,
+.inputBox input:valid + span {
+
+    top: 0;
+
+    transform: translateY(-50%);
+
+    font-size: 11px;
+
+    color: var(--congo-yellow);
+
+    background:
+        #082449;
+
+    border-radius: 5px;
+}
+
+/* =========================================
+   BUTTON
+   ========================================= */
+
+button {
+
+    width: 100%;
+
+    height: 56px;
+
+    border: none;
+
+    border-radius: 15px;
 
     cursor: pointer;
 
-    transition: 0.2s;
+    color: #ffffff;
+
+    font-size: 16px;
+
+    font-weight: 700;
+
+    letter-spacing: 0.3px;
+
+    background:
+        linear-gradient(
+            135deg,
+            var(--congo-blue),
+            #075fc0 55%,
+            var(--congo-red)
+        );
+
+    box-shadow:
+        0 10px 25px rgba(0,127,255,0.25);
+
+    transition:
+        0.3s ease;
+
+    position: relative;
+
+    overflow: hidden;
 }
 
+/* =========================================
+   BUTTON LIGHT EFFECT
+   ========================================= */
 
-/* ======================================
-   BUTTON HOVER
-   ====================================== */
+button::before {
+
+    content: "";
+
+    position: absolute;
+
+    top: 0;
+    left: -100%;
+
+    width: 70%;
+    height: 100%;
+
+    background:
+        linear-gradient(
+            90deg,
+            transparent,
+            rgba(255,255,255,0.25),
+            transparent
+        );
+
+    transform: skewX(-20deg);
+
+    transition:
+        0.6s ease;
+}
+
+button:hover::before {
+    left: 130%;
+}
 
 button:hover {
-    background: #000000;
+
+    transform: translateY(-2px);
+
+    box-shadow:
+        0 15px 35px rgba(0,127,255,0.35);
 }
-
-
-/* ======================================
-   BUTTON ACTIVE
-   ====================================== */
 
 button:active {
-    transform: scale(0.99);
+
+    transform: scale(0.98);
 }
 
-
-/* ======================================
-   BUTTON DISABLED
-   ====================================== */
-
-button:disabled {
-    background: #999999;
-
-    cursor: not-allowed;
-}
-
-
-/* ======================================
+/* =========================================
    LINKS
-   ====================================== */
+   ========================================= */
 
 .links {
-    margin-top: 20px;
 
-    display: flex;
-
-    justify-content: center;
-
-    align-items: center;
-
-    gap: 15px;
-
-    flex-wrap: wrap;
-}
-
-
-/* ======================================
-   LINK
-   ====================================== */
-
-.links a {
-    color: #333333;
-
-    text-decoration: none;
-
-    font-size: 13px;
-}
-
-
-/* ======================================
-   LINK HOVER
-   ====================================== */
-
-.links a:hover {
-    text-decoration: underline;
-}
-
-
-/* ======================================
-   REGISTER TEXT
-   ====================================== */
-
-.links p {
-    margin: 0;
-
-    color: #777777;
-
-    font-size: 13px;
+    margin-top: 25px;
 
     text-align: center;
 }
 
+.links p {
 
-/* ======================================
+    color:
+        rgba(255,255,255,0.65);
+
+    font-size: 13px;
+
+    line-height: 1.7;
+}
+
+.links a {
+
+    display: inline-block;
+
+    margin: 6px 5px;
+
+    color: var(--congo-yellow);
+
+    font-size: 14px;
+
+    font-weight: 600;
+
+    text-decoration: none;
+
+    transition:
+        0.25s ease;
+}
+
+.links a:hover {
+
+    color: #ffffff;
+
+    text-shadow:
+        0 0 12px
+        rgba(247,214,24,0.65);
+}
+
+/* =========================================
+   LOGIN LINKS
+   ========================================= */
+
+#forgotPassword {
+
+    margin-top: 10px;
+}
+
+/* =========================================
+   READONLY REFERRAL
+   ========================================= */
+
+#referralCode {
+
+    color: var(--congo-yellow);
+
+    font-weight: 600;
+
+    background:
+        rgba(0,127,255,0.10);
+
+    cursor: not-allowed;
+}
+
+/* =========================================
    MOBILE
-   ====================================== */
+   ========================================= */
 
 @media (max-width: 480px) {
 
     body {
-        padding: 15px;
+        padding: 16px;
     }
 
     .card {
-        padding: 25px 20px;
 
-        border-radius: 12px;
+        padding: 30px 20px;
+
+        border-radius: 21px;
+    }
+
+    .card h1 {
+        font-size: 27px;
+    }
+
+    .card h2 {
+        font-size: 25px;
+    }
+
+    .card > p {
+        margin-bottom: 25px;
+    }
+
+    .inputBox {
+        margin-bottom: 18px;
+    }
+
+    .inputBox input {
+        height: 54px;
+        font-size: 14px;
+    }
+
+    button {
+        height: 54px;
+    }
+}
+
+/* =========================================
+   VERY SMALL PHONES
+   ========================================= */
+
+@media (max-width: 350px) {
+
+    body {
+        padding: 10px;
+    }
+
+    .card {
+        padding: 25px 16px;
     }
 
     .card h1,
@@ -342,11 +560,11 @@ button:disabled {
     }
 
     .inputBox input {
-        height: 46px;
+        height: 51px;
     }
 
     button {
-        height: 46px;
+        height: 51px;
+        font-size: 14px;
     }
-
 }
