@@ -1,0 +1,217 @@
+<!DOCTYPE html><html lang="fr"><head><meta charset="UTF-8"><meta name="viewport"
+content="width=device-width, initial-scale=1.0">
+
+<title>Créer un compte | Money Vault</title><link rel="stylesheet" href="css/auth.css"></head><body><div class="container"><div class="card"><h2>Créer un compte</h2><p>Ouvrez votre compte Money Vault</p><form id="registerForm"><!-- NOM COMPLET --><div class="inputBox"><input
+type="text"
+id="fullName"
+required>
+
+<span>Nom complet</span>
+
+</div><!-- TÉLÉPHONE --><div class="inputBox"><input
+type="tel"
+id="phone"
+required>
+
+<span>Numéro de téléphone</span>
+
+</div><!-- EMAIL --><div class="inputBox"><input
+type="email"
+id="email"
+required>
+
+<span>Adresse e-mail</span>
+
+</div><!-- MOT DE PASSE --><div class="inputBox"><input
+type="password"
+id="password"
+required>
+
+<span>Mot de passe</span>
+
+</div><!-- CONFIRMATION MOT DE PASSE --><div class="inputBox"><input
+type="password"
+id="confirmPassword"
+required>
+
+<span>Confirmer le mot de passe</span>
+
+</div><!-- CODE DE PARRAINAGE --><div class="inputBox"><input
+type="text"
+id="referralCode"
+readonly>
+
+<span>Code de parrainage</span>
+
+</div><!-- BOUTON --><button type="submit">Créer mon compte
+
+</button><div class="links"><p>Vous avez déjà un compte ?
+
+<a href="login.html">Se connecter
+
+</a></p></div></form></div></div><script type="module">
+
+import { registerUser }
+from "./js/auth.js";
+
+
+// ======================================
+// RÉCUPÉRER LE CODE DE PARRAINAGE
+// ======================================
+
+const urlParams =
+new URLSearchParams(
+window.location.search
+);
+
+const urlReferralCode =
+urlParams.get("ref") || "";
+
+
+// ======================================
+// AFFICHER LE CODE
+// ======================================
+
+const referralInput =
+document.getElementById(
+"referralCode"
+);
+
+if (
+urlReferralCode &&
+referralInput
+) {
+
+referralInput.value =
+urlReferralCode;
+
+}
+
+
+// ======================================
+// FORMULAIRE D'INSCRIPTION
+// ======================================
+
+document
+.getElementById("registerForm")
+.addEventListener(
+"submit",
+async (e) => {
+
+e.preventDefault();
+
+
+// ==================================
+// RÉCUPÉRER LES INFORMATIONS
+// ==================================
+
+const fullName =
+document
+.getElementById("fullName")
+.value
+.trim();
+
+
+const phone =
+document
+.getElementById("phone")
+.value
+.trim();
+
+
+const email =
+document
+.getElementById("email")
+.value
+.trim();
+
+
+const password =
+document
+.getElementById("password")
+.value;
+
+
+const confirmPassword =
+document
+.getElementById("confirmPassword")
+.value;
+
+
+const referralCode =
+document
+.getElementById("referralCode")
+.value
+.trim();
+
+
+// ==================================
+// VÉRIFICATION DU MOT DE PASSE
+// ==================================
+
+if (
+password !==
+confirmPassword
+) {
+
+alert(
+"Les mots de passe ne correspondent pas."
+);
+
+return;
+
+}
+
+
+// ==================================
+// CRÉER LE COMPTE
+// ==================================
+
+try {
+
+const success =
+await registerUser(
+fullName,
+phone,
+email,
+password,
+referralCode
+);
+
+
+// ==================================
+// SUCCÈS
+// ==================================
+
+if (success) {
+
+alert(
+"Inscription réussie ! Votre compte Money Vault a été créé."
+);
+
+window.location.href =
+"login.html";
+
+}
+
+} catch (error) {
+
+console.error(
+"ERREUR INSCRIPTION :",
+error
+);
+
+alert(
+error?.message ||
+"Échec de la création du compte."
+);
+
+}
+
+});
+
+</script>
+
+</body>
+
+</html>
