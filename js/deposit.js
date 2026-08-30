@@ -32,7 +32,7 @@ import {
 // ======================================
 
 const MIN_DEPOSIT = 1;
-const MAX_DEPOSIT = 10;
+const MAX_DEPOSIT = 100000;
 
 
 // ======================================
@@ -490,7 +490,7 @@ depositForm?.addEventListener(
         ) {
 
             alert(
-                "Le dépôt maximum est de 10$."
+                "Le dépôt maximum est de 100000$."
             );
 
             return;
