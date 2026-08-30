@@ -2,7 +2,7 @@
 // DEPOSIT.JS - VERSION FRANÇAISE
 // MONEY VAULT PRO - USD
 // MINIMUM : 1$
-// MAXIMUM : 10$
+// MAXIMUM : 100000$
 // ======================================
 
 // ======================================
@@ -1341,7 +1341,7 @@ console.log(
 );
 
 console.log(
-    " Dépôt maximum : 10$"
+    " Dépôt maximum : 100000$"
 );
 
 console.log(
